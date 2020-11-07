@@ -70,5 +70,67 @@ $(function(){
       $('.apple').before(li);
     });
 
+// Q6
+      $("#q6-btn").on("click",function(){
+      // let span = $('<span>');
+      // span.text('追加');
+      // span.addClass('red');
+      // $('.q6-text').append(span);
+      $(".q6-text").append('<span class="red">追加</li>');
+  });
+
+// Q7　「on」というクラスがついていなければ外す、ついてなかったらつける(toggle)
+$('#q7-btn').on('click',function(){
+  $(this).toggleClass('on');
+});
+
+// Q8
+$('#q8-btn').on('click',function(){
+  $(this)
+    .siblings()
+    .slideToggle();
+});
+
+// Q9
+$('#q9-btn').on('click',function(){
+  $('body, html').animate({ scrollTop:0}, 500);
+});
+
+// Q10
+// 表示ボタンが押されたとき
+$('.q10-show-btn').on('click',function(){
+  $('.q10-target').fadeIn(1000);
+});
+// 非表示ボタンが押されたとき
+$('.q10-hide-btn').on('click',function(){
+  $('.q10-target').fadeOut(2000);
+});
+
+// Q11
+// 画面がスクロールされたとき
+$(window).on('scroll',function(){
+
+  // idがq11の要素の画面最上部からの距離を取得
+  let q11_position = $('#q11').offset().top;
+
+// 画面の高さ(ブラウザで見えてるところ)
+let wh = $(window).height();
+
+let now_position = $(window).scrollTop();
+
+if (q11_position <= wh + now_position){
+// Q11まで画面がスクロールされている
+$('.q11-target').removeClass('hide');
+}else{
+// Q11がまだ見えていない(上の方でスクロールが止まっている？)
+$('.q11-target').addClass('hide');
+}
+});
+
+// Q12
+$('#q12-btn').on('click',function(){
+  $('.q12-target').toggleClass('hide');
+});
+
 
 });
